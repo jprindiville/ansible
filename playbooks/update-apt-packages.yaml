@@ -1,6 +1,5 @@
 ---
 - name: Update Debian Linux
-  hosts: your_host_group_or_IP_here
   become: yes
 
   tasks:
