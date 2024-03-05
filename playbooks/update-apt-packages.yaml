@@ -1,8 +1,7 @@
 ---
 - name: Update Debian Linux
   become: yes
-
-  tasks:
+  
     - name: Update apt package cache
       apt:
         update_cache: yes
