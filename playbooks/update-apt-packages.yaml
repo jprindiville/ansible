@@ -1,7 +1,14 @@
 ---
-- hosts: all
-  become: true
+- name: Update Debian Linux
+  hosts: your_host_group_or_IP_here
+  become: yes
+
   tasks:
-    - name: Update apt cache
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages
       apt:
         upgrade: yes
+        autoclean: yes
