@@ -1,16 +1,25 @@
 ---
-- hosts: all
+- name: Make sure the required directory exists
+  hosts: localhost
+  gather_facts: false
+  
+  tasks: 
+
+    - name: Make sure the required directory exists
+      file:
+        path: "{{save_dir}}/backup"
+        state: directory
+      check_mode: no
+
+- name: backup EOS conf 
+  hosts: eos
+  connection: httpapi
+  gather_facts: false
+  
   tasks:
-    - name: backup EOS configs
+
+    - name: backup EOS conf 
       eos_config:
         backup: yes
         backup_options:
-          filename: "{{ inventory_hostname }}"
-          dir_path: "/app/backups/configs"
-    vars:
-    ansible_connection: httpapi
-    ansible_network_os: eos
-    ansible_become: yes
-    ansible_become_method: enable
-    ansible_httpapi_use_ssl: true
-    ansible_httpapi_validate_certs: false
+          dir_path: "{{save_dir}}/backup"
