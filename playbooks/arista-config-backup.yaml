@@ -7,7 +7,7 @@
 
     - name: Make sure the required directory exists
       file:
-        path: "{{save_dir}}/backup"
+        path: "/app/backup"
         state: directory
       check_mode: no
 
