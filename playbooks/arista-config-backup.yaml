@@ -1,8 +1,5 @@
 ---
-- name: Backup device configs
-  gather_facts: false
-  # connection: network_cli
-  hosts: all
+- hosts: all
   tasks:
     - name: backup EOS configs
       eos_config:
@@ -10,3 +7,10 @@
         backup_options:
           filename: "{{ inventory_hostname }}"
           dir_path: "/app/backups/configs"
+    vars:
+    ansible_connection: httpapi
+    ansible_network_os: eos
+    ansible_become: yes
+    ansible_become_method: enable
+    ansible_httpapi_use_ssl: true
+    ansible_httpapi_validate_certs: false
