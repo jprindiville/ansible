@@ -12,7 +12,7 @@
       check_mode: no
 
 - name: backup EOS conf 
-  hosts: "Arista Switches"
+  hosts: all
   connection: httpapi
   gather_facts: false
   
