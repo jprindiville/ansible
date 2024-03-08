@@ -5,7 +5,7 @@
   vars:
     time: "{{ lookup('pipe', 'date -d \"1 day ago\" +\"%Y%m%d\"') }}"
   tasks:
-    - name: backup EOS configs
+    - name: Backup EOS Configs
       eos_config:
         backup: yes
         backup_options:
