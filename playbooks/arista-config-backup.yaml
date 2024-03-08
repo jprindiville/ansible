@@ -1,13 +1,18 @@
 - name: Backup device configs
   gather_facts: false
-  # connection: network_cli
   hosts: all
   vars:
-    time: "{{ lookup('pipe', 'date -d \"1 day ago\" +\"%Y%m%d\"') }}"
+    date: "{{ lookup('pipe', 'date -d \"1 day ago\" +\"%Y%m%d\"') }}"
+    ansible_connection: httpapi
+    ansible_network_os: eos
+    ansible_become: yes
+    ansible_become_method: enable
+    ansible_httpapi_use_ssl: true
+    ansible_httpapi_validate_certs: false
   tasks:
     - name: Backup EOS Configs
       eos_config:
         backup: yes
         backup_options:
-          filename: "{{ time }}-{{ inventory_hostname }}.txt"
+          filename: "{{ date }}-{{ inventory_hostname }}.txt"
           dir_path: "/app/backup/"
