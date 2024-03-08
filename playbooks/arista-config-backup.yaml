@@ -7,5 +7,5 @@
       eos_config:
         backup: yes
         backup_options:
-          filename: "{{ inventory_hostname }}"
-          dir_path: "/app/backup/{{ inventory_hostname }}"
+          filename: "{{ date }}{{ inventory_hostname }}"
+          dir_path: "/app/backup/"
