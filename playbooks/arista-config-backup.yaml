@@ -8,4 +8,4 @@
         backup: yes
         backup_options:
           filename: "{{ inventory_hostname }}"
-          dir_path: "/app/backup/{{ date }}
+          dir_path: "/app/backup/"{{ date }}"
