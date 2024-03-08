@@ -3,11 +3,9 @@
   # connection: network_cli
   hosts: all
   tasks:
-    - name: Display the current timestamp in YYYY-MM-DD
-      var=ansible_date_time.date
     - name: backup EOS configs
       eos_config:
         backup: yes
         backup_options:
           filename: "{{ inventory_hostname }}"
-          dir_path: "/app/backup"
+          dir_path: "/app/backup/{{ date }}
