@@ -1,4 +1,4 @@
-- name: Backup device configs
+- name: Arista Config Backup
   gather_facts: false
   hosts: all
   vars:
