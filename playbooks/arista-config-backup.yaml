@@ -2,13 +2,12 @@
   gather_facts: false
   # connection: network_cli
   hosts: all
+  vars:
+    time: "{{ lookup('pipe', 'date -d \"1 day ago\" +\"%Y%m%d\"') }}"
   tasks:
-    - name: date and time
-      ansible.builtin.debug:
-        var: ansible_date_time
     - name: backup EOS configs
       eos_config:
         backup: yes
         backup_options:
-          filename: "{{ ansible_date_time }}{{ inventory_hostname }}.txt"
+          filename: "{{ time }}{{ inventory_hostname }}.txt"
           dir_path: "/app/backup/"
