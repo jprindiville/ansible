@@ -7,5 +7,5 @@
       eos_config:
         backup: yes
         backup_options:
-          filename: "{{ ansible_date_time }}{{ inventory_hostname }}.txt"
+          filename: "{{ SEMAPHORE_JOB_ID }}{{ inventory_hostname }}.txt"
           dir_path: "/app/backup/"
