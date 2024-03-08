@@ -9,5 +9,5 @@
       eos_config:
         backup: yes
         backup_options:
-          filename: "{{ time }}{{ inventory_hostname }}.txt"
+          filename: "{{ time }}-{{ inventory_hostname }}.txt"
           dir_path: "/app/backup/"
