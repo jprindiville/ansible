@@ -1,6 +1,11 @@
----
-- name: Arista - show running-config
-  eos_command:
-    commands: 'show running-config'
-  register: output
-  ignore_errors: yes
+- name: Backup device configs
+  gather_facts: false
+  # connection: network_cli
+  hosts: all
+  tasks:
+    - name: backup EOS configs
+      eos_config:
+        backup: yes
+        backup_options:
+          filename: "{{ inventory_hostname }}"
+          dir_path: "/app/backup"
