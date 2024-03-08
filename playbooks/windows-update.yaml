@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-    #ansible_connection: winrm
+    ansible_connection: winrm
     ansible_winrm_kinit_cmd: "{{ lookup('pipe', 'command -c kinit') }}"
   tasks:
   - name: Install all updates and reboot as many times as needed
