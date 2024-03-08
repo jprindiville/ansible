@@ -2,7 +2,7 @@
   gather_facts: false
   hosts: all
   vars:
-    date: "{{ lookup('pipe', 'date -d \"1 day ago\" +\"%Y%m%d\"') }}"
+    date: "{{ lookup('pipe', 'date +%Y-%m-%d@%H:%M:%S') }}"
     ansible_connection: httpapi
     ansible_network_os: eos
     ansible_become: yes
