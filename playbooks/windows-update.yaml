@@ -1,12 +1,13 @@
 ---
 - hosts: all
-  vars:
-      ansible_port: 5985
-      ansible_winrm_scheme: http
-      ansible_winrm_send_cbt: no
-      ansible_connection: winrm
-      ansible_winrm_transport: ntlm
-      ansible_winrm_server_cert_validation: ignore
+  gather_facts: false
+#  vars:
+#      ansible_port: 5985
+#      ansible_winrm_scheme: http
+#      ansible_winrm_send_cbt: no
+#      ansible_connection: winrm
+#      ansible_winrm_transport: ntlm
+#      ansible_winrm_server_cert_validation: ignore
   tasks:
   - name: Install all updates and reboot as many times as needed
     ansible.windows.win_updates:
@@ -15,3 +16,11 @@
         - CriticalUpdates
         - UpdateRollups
       reboot: true
+      register: update_results
+
+    - name: Report results
+      debug:
+        msg: |
+          {% for k in update_results.updates %}
+          {{ update_results.updates[k].title }}
+          {% endfor %}
