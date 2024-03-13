@@ -13,5 +13,5 @@
     ansible.windows.win_updates:
       category_names: '*'
       reboot: true
+      reboot_timeout: 3600
       log_path: C:\ansible_wu.txt
-
