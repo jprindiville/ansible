@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  gather_facts: false
+  gather_facts: true
   vars:
       ansible_port: 5985
       ansible_winrm_scheme: http
