@@ -9,18 +9,11 @@
 #      ansible_winrm_transport: ntlm
 #      ansible_winrm_server_cert_validation: ignore
   tasks:
-  - name: Install all updates and reboot as many times as needed
+  - name: Install all updates and reboot if needed
     ansible.windows.win_updates:
       category_names:
         - SecurityUpdates
         - CriticalUpdates
         - UpdateRollups
       reboot: true
-      register: update_results
 
-    - name: Report results
-      debug:
-        msg: |
-          {% for k in update_results.updates %}
-          {{ update_results.updates[k].title }}
-          {% endfor %}
