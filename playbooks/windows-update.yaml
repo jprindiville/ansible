@@ -15,9 +15,9 @@
         category_names: '*'
         log_path: C:\\ansible_win_updates.log
         reboot: yes
-      register: update_results
+#      register: update_results
 
-    - name: Output installed updates
-      debug:
-        msg: "Installed updates: {{ update_results.installed_updates }}"
+#    - name: Output installed updates
+#      debug:
+#        msg: "Installed updates: {{ update_results.installed_updates }}"
 
