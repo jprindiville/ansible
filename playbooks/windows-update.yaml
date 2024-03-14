@@ -1,5 +1,6 @@
 ---
 - hosts: all
+- name: Update Windows servers and output installed updates
   gather_facts: true
   vars:
       ansible_port: 5985
@@ -9,9 +10,14 @@
       ansible_winrm_transport: ntlm
       ansible_winrm_server_cert_validation: ignore
   tasks:
-  - name: Install all updates and reboot if needed
-    ansible.windows.win_updates:
-      category_names: '*'
-      reboot: true
-      reboot_timeout: 3600
-      log_path: C:\ansible_wu.txt
+    - name: Install all updates
+      ansible.windows.win_updates:
+        category_names: '*'
+        log_path: C:\\ansible_win_updates.log
+        reboot: yes
+      register: update_results
+
+    - name: Output installed updates
+      debug:
+        msg: "Installed updates: {{ update_results.installed_updates }}"
+
