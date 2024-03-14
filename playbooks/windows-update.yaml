@@ -1,6 +1,6 @@
 ---
 - hosts: all
-- name: Update Windows servers and output installed updates
+#- name: Update Windows servers and output installed updates
   gather_facts: true
   vars:
       ansible_port: 5985
