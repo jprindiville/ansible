@@ -1,6 +1,5 @@
 ---
 - hosts: all
-#- name: Update Windows servers and output installed updates
   gather_facts: true
   vars:
       ansible_port: 5985
@@ -15,9 +14,4 @@
         category_names: '*'
         log_path: C:\\ansible_win_updates.log
         reboot: yes
-#      register: update_results
-
-#    - name: Output installed updates
-#      debug:
-#        msg: "Installed updates: {{ update_results.installed_updates }}"
-
+        reboot_timeout: 3600
