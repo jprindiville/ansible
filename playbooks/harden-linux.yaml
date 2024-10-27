@@ -1,0 +1,5 @@
+- name: Harden Linux
+  hosts: all
+  tasks:
+    - name: Harden Script
+      script: /scripts/harden.sh
